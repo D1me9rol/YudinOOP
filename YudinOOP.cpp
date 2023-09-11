@@ -2,10 +2,55 @@
 //
 
 #include <iostream>
+#include "Customer.h"
+#include "Shop.h"
+
+using namespace std;
+
+void ShowMenu()
+{
+	cout << "0. Exit\n1. Add Customer\n2. Show customers list\n3. Read from file\n4. Save to file\n5. Clear customers list" << endl;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Shop Tools;
+	int Option;
+	
+	do
+	{
+		ShowMenu();
+		cin >> Option;
+		switch (Option)
+		{
+		case 0:
+			cout << "Good bye!" << endl;
+			break;
+		case 1:
+			Tools.AddCustomer();
+			
+			break;
+		case 2:
+			Tools.ShowCustomersList();
+			
+			break;
+		case 3:
+			Tools.FileRead();
+			
+			break;
+		case 4:
+			Tools.FileSave();
+			
+			break;
+		case 5:
+			Tools.ClearCustomersList();
+			
+			break;
+		default:
+			cout << "Choose the number between 0 and 5" << endl;
+			break;
+		} 
+	} while (Option != 0);
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

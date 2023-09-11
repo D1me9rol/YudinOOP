@@ -3,35 +3,33 @@
 #include <fstream>
 #include <string>
 
-using namespace std;
+
 
 class Customer
 {
 private:
-	string name;
+	std::string name;
 	int age;
+	double avg_check;
 
 public:
-	void SetData(string c_name, int c_age)
-	{
-		cout << "Enter the name: ";
-		getline(cin, c_name);
+	void SetData(std::string c_name, int c_age, double c_avg_check);
+	
+	std::string GetName();
+	int GetAge();
+	double GetAvg_Check();
 
-		cout << "Enter age: ";
-		cin >> c_age;
 
-		name = c_name;
-		age = c_age;
-	}
+	void EnterData();
+	void ShowData();
+	void ReadFile(Customer& Visitor);
+	void SaveFile(Customer Visitor);
 
-	void ShowData()
-	{
-		cout << "Name: " << name << "\tAge: " << age << endl;
-	}
 
-	void GetFromFile()
-	{
-		
-	}
+	friend std::ifstream& operator >> (std::ifstream& fin, Customer& Visitor);
+	friend std::ofstream& operator << (std::ofstream& fout, Customer Visitor);
+	//friend std::ostream& operator << (std::ostream& out, Customer& Visitor);
+	//friend std::istream& operator >> (std::istream& in, Customer& Visitor);
+
 };
 
