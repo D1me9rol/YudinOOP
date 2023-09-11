@@ -22,12 +22,12 @@ public:
 
 	void EnterData();
 	void ShowData();
-	void ReadFile(Customer& Visitor);
-	void SaveFile(Customer Visitor);
+	void ReadFile(std::ifstream& fin);
+	void SaveFile(std::ofstream& fout);
 
 
-	friend std::ifstream& operator >> (std::ifstream& fin, Customer& Visitor);
-	friend std::ofstream& operator << (std::ofstream& fout, Customer Visitor);
+	//friend std::ifstream& operator >> (std::ifstream& fin, Customer& Visitor);
+	//friend std::ofstream& operator << (std::ofstream& fout, Customer Visitor);
 	//friend std::ostream& operator << (std::ostream& out, Customer& Visitor);
 	//friend std::istream& operator >> (std::istream& in, Customer& Visitor);
 

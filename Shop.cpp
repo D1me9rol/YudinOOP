@@ -8,7 +8,7 @@ void Shop::AddCustomer()
 	Customer Visitor;
 	Visitor.EnterData();
 
-	Visitors.emplace(Visitors.size()+1, Visitor);
+	Visitors.push_back(Visitor);
 	cout << "------------------------------" << endl;
 	cout << "Added customer ";
 	Visitor.ShowData();
@@ -21,7 +21,7 @@ void Shop::ShowCustomersList()
 	for (int i=0; i < Visitors.size(); i++)
 	{
 		cout << i+1 << ".";
-		Visitors[i+1].ShowData();
+		Visitors[i].ShowData();
 	}
 	cout << "------------------------------" << endl;
 }
@@ -41,8 +41,11 @@ void Shop::FileRead()
 	InData >> CustomersAmount;
 	for (int i=0; i < CustomersAmount; i++)
 	{
-		InData >> Visitors[i+1];
+		Visitor.ReadFile(InData);
+		Visitors.push_back(Visitor);
 	}
+
+	InData.close();
 
 	cout << "File readed successfully!" << endl;
 }
@@ -58,10 +61,12 @@ void Shop::FileSave()
 	OutData.open(FileName);
 
 	OutData << Visitors.size() << endl;
-	for (int i = 0; i < Visitors.size(); i++)
+	for (auto c:Visitors)
 	{
-		OutData << Visitors[i + 1];
+		c.SaveFile(OutData);
 	}
+
+	OutData.close();
 
 	cout << "File saved successfully" << endl;
 }

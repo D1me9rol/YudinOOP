@@ -50,55 +50,39 @@ void Customer::ShowData()
 	cout << "\tName: " << GetName() << "\tAge: " << GetAge() << "\tAverage Check: " << GetAvg_Check() << endl;
 }
 
-void Customer::ReadFile(Customer& Visitor)
+void Customer::ReadFile(ifstream& fin)
 {
-	string FileName;
-
-	cout << "Enter the name of file to read: ";
-	cin >> FileName;
-	ifstream InData;
-	InData.open(FileName);
-
-
-	InData >> Visitor;
-
-	InData.close();
-}
-
-void Customer::SaveFile(Customer Visitor)
-{
-	string FileName;
-
-	cout << "Enter the name of file to save: ";
-	cin >> FileName;
-	ofstream OutData;
-	OutData.open(FileName);
-
-	OutData << Visitor;
-	OutData.close();
-}
-
-
-
-std::ifstream& operator>>(std::ifstream& fin, Customer& Visitor)
-{
-	string c_name;
-	int c_age;
-	double c_avg_check;
-
 	fin.ignore();
-	getline(fin, c_name);
-	fin >> c_age >> c_avg_check;
-
-	Visitor.SetData(c_name, c_age, c_avg_check);
-	return fin;
+	getline(fin, name);
+	fin >> age >> avg_check;
 }
 
-std::ofstream& operator <<(std::ofstream& fout, Customer Visitor)
+void Customer::SaveFile(ofstream& fout)
 {
-	fout << Visitor.GetName() << "\n" << Visitor.GetAge() << "\n" << Visitor.GetAvg_Check() << endl;
-	return fout;
+	fout << name << "\n" << age << "\n" << avg_check << endl;
 }
+
+
+
+//std::ifstream& operator>>(std::ifstream& fin, Customer& Visitor)
+//{
+//	string c_name;
+//	int c_age;
+//	double c_avg_check;
+//
+//	fin.ignore();
+//	getline(fin, c_name);
+//	fin >> c_age >> c_avg_check;
+//
+//	Visitor.SetData(c_name, c_age, c_avg_check);
+//	return fin;
+//}
+
+//std::ofstream& operator <<(std::ofstream& fout, Customer Visitor)
+//{
+//	fout << Visitor.GetName() << "\n" << Visitor.GetAge() << "\n" << Visitor.GetAvg_Check() << endl;
+//	return fout;
+//}
 
 //std::ostream& operator<<(std::ostream& out, Customer& Visitor)
 //{

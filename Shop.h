@@ -1,11 +1,11 @@
 #pragma once
 #include "Customer.h"
 
-#include <map>
+#include <vector>
 class Shop
 {
 private:
-	std::map<int, Customer> Visitors;
+	std::vector<Customer> Visitors;
 public:
 
 	void AddCustomer();
