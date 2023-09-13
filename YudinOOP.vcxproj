@@ -127,13 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Customer.cpp" />
-    <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="YudinCustomer.cpp" />
+    <ClCompile Include="YudinShop.cpp" />
     <ClCompile Include="YudinOOP.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Customer.h" />
-    <ClInclude Include="Shop.h" />
+    <ClInclude Include="YudinCustomer.h" />
+    <ClInclude Include="YudinShop.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

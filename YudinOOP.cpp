@@ -2,19 +2,23 @@
 //
 
 #include <iostream>
-#include "Customer.h"
-#include "Shop.h"
+#include "YudinCustomer.h"
+#include "YudinShop.h"
 
 using namespace std;
 
 void ShowMenu()
 {
-	cout << "0. Exit\n1. Add Customer\n2. Show customers list\n3. Read from file\n4. Save to file\n5. Clear customers list" << endl;
+	cout << "0. Выход\n1. Добавить клиента\n2. Показать список клиентов\n3. Чтение из файла\n4. Сохранить в файл\n5. Очистить список посетителей" << endl;
 }
 
 int main()
 {
-	Shop Tools;
+	setlocale(LC_ALL, ".1251");
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+
+	YudinShop Tools;
 	int Option;
 	
 	do
@@ -24,7 +28,7 @@ int main()
 		switch (Option)
 		{
 		case 0:
-			cout << "Good bye!" << endl;
+			cout << "До свидания!" << endl;
 			break;
 		case 1:
 			Tools.AddCustomer();
@@ -43,11 +47,11 @@ int main()
 			
 			break;
 		case 5:
-			Tools.ClearCustomersList();
+			Tools.~YudinShop();
 			
 			break;
 		default:
-			cout << "Choose the number between 0 and 5" << endl;
+			cout << "Введите цифру от 0 до 5!" << endl;
 			break;
 		} 
 	} while (Option != 0);
