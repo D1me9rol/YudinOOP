@@ -36,6 +36,7 @@ void YudinCustomer::EnterData()
 	cout << "Введите возраст: ";
 	cin >> age;
 	
+	cin.ignore();
 	cout << "Введите среднее значение чека: ";
 	cin >> avg_check;
 	
@@ -44,7 +45,7 @@ void YudinCustomer::EnterData()
 
 void YudinCustomer::ShowData()
 {
-	cout << "\tИмя: " << name << "\tВозраст: " << name << "\tСредний чек: " << avg_check << endl;
+	cout << "\tИмя: " << name << "\tВозраст: " << age << "\tСредний чек: " << avg_check << endl;
 }
 
 void YudinCustomer::ReadFile(ifstream& fin)
@@ -59,3 +60,16 @@ void YudinCustomer::SaveFile(ofstream& fout)
 	fout << name << "\n" << age << "\n" << avg_check << endl;
 }
 
+std::ifstream& operator>>(std::ifstream& fin, YudinCustomer& Visitor)
+{
+	fin.ignore();
+	getline(fin, Visitor.name);
+	fin >> Visitor.age >> Visitor.avg_check;
+	return fin;
+}
+
+std::ostream& operator<<(std::ostream& fout, const YudinCustomer& Visitor)
+{
+	fout << Visitor.name << "\n" << Visitor.age << "\n" << Visitor.avg_check << endl;
+	return fout;
+}

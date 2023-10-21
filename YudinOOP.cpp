@@ -4,6 +4,7 @@
 #include <iostream>
 #include "YudinCustomer.h"
 #include "YudinShop.h"
+#include <windows.h>
 
 using namespace std;
 
@@ -47,7 +48,7 @@ int main()
 			
 			break;
 		case 5:
-			Tools.~YudinShop();
+			Tools.ClearCustomersList();
 			
 			break;
 		default:

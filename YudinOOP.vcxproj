@@ -130,10 +130,12 @@
     <ClCompile Include="YudinCustomer.cpp" />
     <ClCompile Include="YudinShop.cpp" />
     <ClCompile Include="YudinOOP.cpp" />
+    <ClCompile Include="YudinWholesaler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="YudinCustomer.h" />
     <ClInclude Include="YudinShop.h" />
+    <ClInclude Include="YudinWholesaler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

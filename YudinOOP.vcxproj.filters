@@ -18,18 +18,24 @@
     <ClCompile Include="YudinOOP.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Customer.cpp">
+    <ClCompile Include="YudinCustomer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Shop.cpp">
+    <ClCompile Include="YudinShop.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="YudinWholesaler.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Customer.h">
+    <ClInclude Include="YudinCustomer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Shop.h">
+    <ClInclude Include="YudinShop.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="YudinWholesaler.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

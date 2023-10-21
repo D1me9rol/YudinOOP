@@ -7,19 +7,16 @@ class YudinShop
 private:
 	std::vector<YudinCustomer*> Visitors;
 public:
-	~YudinShop()
+	/*~YudinShop()
 	{
-		for (YudinCustomer* Visitor : Visitors)
-		{
-			delete Visitor;
-		}
-	}
+		
+	}*/
 
 	void AddCustomer();
 	void ShowCustomersList();
 	void FileRead();
 	void FileSave();
-	//void ClearCustomersList();
+	void ClearCustomersList();
 
 	
 };

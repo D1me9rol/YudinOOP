@@ -5,8 +5,21 @@ using namespace std;
 
 void YudinShop::AddCustomer()
 {
-	YudinCustomer* Visitor = new YudinCustomer("", 0, 0);
-	Visitor->EnterData();
+	string name;
+	int age;
+	double avg_check;
+
+	cout << "Введите имя: ";
+	cin.ignore();
+	getline(cin, name);
+
+	cout << "Введите возраст: ";
+	cin >> age;
+
+	cin.ignore();
+	cout << "Введите среднее значение чека: ";
+	cin >> avg_check;
+	YudinCustomer* Visitor = new YudinCustomer(name, age, avg_check);
 	Visitors.push_back(Visitor);
 }
 
@@ -17,7 +30,6 @@ void YudinShop::ShowCustomersList()
 	{
 		for (const auto& Visitor : Visitors)
 		{
-			//cout << i+1 << ".";
 			Visitor->ShowData();
 		}
 	}
@@ -32,21 +44,31 @@ void YudinShop::FileRead()
 	
 
 	cout << "Введите название файла для чтения: ";
-	cin >> FileName;
+	cin.ignore();
+	getline(cin, FileName);
 	ifstream InData;
 	InData.open(FileName);
 
-	InData >> CustomersAmount;
-	for (int i=0; i < CustomersAmount; i++)
+	if (InData.is_open())
 	{
-		YudinCustomer* Visitor = new YudinCustomer("", 0, 0);
-		Visitor->ReadFile(InData);
-		Visitors.push_back(Visitor);
+		
+		InData >> CustomersAmount;
+		for (int i = 0; i < CustomersAmount; i++)
+		{
+			YudinCustomer Customer;
+			InData >> Customer;
+			YudinCustomer* Visitor = new YudinCustomer;
+			//Customer.ReadFile(InData);
+			*Visitor = Customer;
+			Visitors.push_back(Visitor);
+			Visitor->ShowData();
+		}
+
+		InData.close();
+
+		cout << "Данные успешно прочитаны!" << endl;
 	}
-
-	InData.close();
-
-	cout << "Данные успешно прочитаны!" << endl;
+	else cout << "Не удалось открыть файл!" << endl;
 }
 
 void YudinShop::FileSave()
@@ -55,24 +77,33 @@ void YudinShop::FileSave()
 
 	cout << "Введите название файла для сохранения: ";
 	cin >> FileName;
-	ofstream OutData;
-	OutData.open(FileName);
-
-	OutData << Visitors.size() << endl;
-	for (auto Visitor:Visitors)
+	ofstream OutData(FileName);
+	if(OutData.is_open())
 	{
-		Visitor->SaveFile(OutData);
+		OutData << Visitors.size() << endl;
+		for (auto Visitor : Visitors)
+		{
+			OutData << *Visitor;
+		}
+		OutData.close();
+
+		cout << "Файл успешено сохранен!" << endl;
 	}
 
-	OutData.close();
+	//OutData.close();
 
-	cout << "Файл успешено сохранен!" << endl;
+	//cout << "Файл успешено сохранен!" << endl;
 }
 
-//void YudinShop::ClearCustomersList()
-//{
-//	
-//	cout << "Customers list cleared successfully" << endl;
-//}
+void YudinShop::ClearCustomersList()
+{
+	for (YudinCustomer* Visitor : Visitors)
+	{
+		delete Visitor;
+
+	}
+	Visitors.clear();
+	cout << "Customers list cleared successfully" << endl;
+}
 
 
